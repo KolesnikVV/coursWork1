@@ -1,3 +1,4 @@
+import java.util.Objects;
 public class Employee {
 
     private String LastName; //Фамилия
@@ -29,6 +30,7 @@ public class Employee {
         Id = ++Counter;
     }
 
+
     @Override
     public String toString() {
         return "Id: " + Id + " ФИО: " + LastName + " " + FirstName + " " + Surname + " Отдел: " + Department + " Зарплата: " + Salary;
@@ -50,5 +52,10 @@ public class Employee {
         for (Employee i: newEmployee) {
             System.out.println(i);
         }
+        float sum = 0f;
+        for (int i = 0; i < newEmployee.length; i++) {
+            sum = sum + newEmployee[i].getSalary();
+        }
+        System.out.println(sum);
     }
 }
