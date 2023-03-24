@@ -3,11 +3,11 @@ import java.util.Arrays;
 public class Main {
     public static Employee[] newEmployee = new Employee[10];
 
-    public static void printEmployee(String people) {
+    static void printEmployee(String people) {
         for (Employee employee : newEmployee) System.out.println(employee);
     }
 
-    public static void printFIO(String name) {
+    static void printFIO(String name) {
         String fio = null;
         for (Employee employee : newEmployee) {
             fio = employee.getFirstName() + " " + employee.getLastName() + " " + employee.getSurname();
@@ -16,7 +16,7 @@ public class Main {
         }
     }
 
-    public static void calculateTotalSalary(String sal) {
+    static void calculateTotalSalary(String sal) {
         float sum = 0f;
         for (Employee employee : newEmployee) {
             sum = sum + employee.getSalary();
@@ -24,7 +24,7 @@ public class Main {
         System.out.println("Сумма затрат на зарплаты в месяц равна: " + sum);
     }
 
-    public static void calculateMinSalary(String salMin) {
+    static void calculateMinSalary(String salMin) {
         float minSal = newEmployee[0].getSalary();
         for (Employee employee : newEmployee) {
             if (employee.getSalary() < minSal) {
@@ -36,7 +36,7 @@ public class Main {
         }
     }
 
-    public static void calculateMaxSalary(String salMax) {
+    static void calculateMaxSalary(String salMax) {
         float maxSal = newEmployee[0].getSalary();
         for (Employee employee : newEmployee) {
             if (employee.getSalary() > maxSal) {
@@ -48,7 +48,7 @@ public class Main {
         }
     }
 
-    public static void calculateAverageSalary(String averageSal) {
+    static void calculateAverageSalary(String averageSal) {
         float averege = 0f;
         for (Employee employee : newEmployee) {
             averege = averege + employee.getSalary() / newEmployee.length;
@@ -70,7 +70,7 @@ public class Main {
         }
     }
 
-    public static void minDepartmentSal(int inputDepartment) {
+    static void minDepartmentSal(int inputDepartment) {
         float minSalary = newEmployee[0].getSalary();
         for (Employee i : newEmployee) {
             int a = i.getDepartment();
@@ -87,7 +87,7 @@ public class Main {
 
         }
     }
-    public static void maxDepartmentSal(int inputDepartment) {
+    static void maxDepartmentSal(int inputDepartment) {
         float maxSalary = Float.MIN_VALUE;
         for (Employee i : newEmployee) {
             int a = i.getDepartment();
@@ -104,7 +104,7 @@ public class Main {
 
         }
     }
-    public static void sumDeptSal(int inputDepartment) {
+        static void sumDeptSal(int inputDepartment) {
         int sumDeptSalary = 0;
         for (Employee i : newEmployee) {
             int a = i.getDepartment();
@@ -117,7 +117,7 @@ public class Main {
         System.out.println("Затраты на зарплату в отделе " + sumDeptSalary);
     }
 
-    public static void averageDepartmentSal(int inputDepartment) {
+    static void averageDepartmentSal(int inputDepartment) {
         int quantityEmployee = 0;
         float averegeDepertment = 0f;
         for (Employee i : newEmployee) {
@@ -131,7 +131,7 @@ public class Main {
         System.out.println("Средняя зарплата состовляет: " + averegeDepertment);
     }
 
-    public static void indexDepartmentSalary (int inputDepartment, float index) {
+    static void indexDepartmentSalary (int inputDepartment, float index) {
         for (Employee i : newEmployee) {
             int j = i.getDepartment();
             if (j == inputDepartment) {
