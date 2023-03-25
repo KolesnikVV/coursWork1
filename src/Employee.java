@@ -10,13 +10,13 @@ public class Employee {
     private int id;
 
 
-    public Employee(String lastName1, String firstName1, String surname1, int dept, float salary1) {
-        lastName = lastName1;
-        firstName = firstName1;
-        surname = surname1;
-        department = dept;
-        salary = salary1;
-        id = ++counter;
+    public Employee(String lastName, String firstName, String surname, int department, float salary) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.department = department;
+        this.salary = salary;
+        this.id = ++counter;
     }
 
 
