@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Main {
+
     public static Employee[] newEmployee = new Employee[10];
 
     static void printEmployee(String people) {
@@ -56,7 +57,7 @@ public class Main {
         System.out.println("Средняя зарплата состовляет: " + averege);
     }
 
-    static void calculateIndexSalary(String ind) {
+    static void calculateIndexSalary(float ind) {
         float index = 10;
         float onePercent = 0;
         float indexSalary = 0;
@@ -65,46 +66,37 @@ public class Main {
                 onePercent = employee.getSalary() / 100;
                 indexSalary = onePercent * index + employee.getSalary();
                 employee.SetSalary(indexSalary);
-                System.out.println("Если проидексировать зарплату на " + index +" % " + "зарплата будут состовлять " + employee);
+                System.out.println("Если проидексировать зарплату на " + index + " % " + "зарплата будут состовлять " + employee);
             }
         }
     }
 
     static void minDepartmentSal(int inputDepartment) {
-        float minSalary = newEmployee[0].getSalary();
-        for (Employee i : newEmployee) {
-            int a = i.getDepartment();
-            if (a == inputDepartment) {
-                for (Employee employee : newEmployee) {
-                    if (employee.getSalary() < minSalary) {
-                        minSalary = employee.getSalary();
-                        if (employee.getSalary() == minSalary) {
-                            System.out.println("Сотрудник с минимальной зарплатой " + employee);
-                        }
-                    }
+        float minSal = newEmployee[0].getSalary();
+        for (Employee employee : newEmployee) {
+            if (employee.getSalary() > minSal) {
+                minSal = employee.getSalary();
+                if (employee.getSalary() == minSal && employee.getDepartment() == inputDepartment) {
+                    System.out.println("Сотрудник с минимальной зарплатой в отделе: " + employee);
                 }
             }
-
         }
     }
+
     static void maxDepartmentSal(int inputDepartment) {
-        float maxSalary = Float.MIN_VALUE;
-        for (Employee i : newEmployee) {
-            int a = i.getDepartment();
-            if (a == inputDepartment) {
-                for (Employee employee : newEmployee) {
-                    if (employee.getSalary() > maxSalary) {
-                        maxSalary = employee.getSalary();
-                        if (employee.getSalary() == maxSalary) {
-                            System.out.println("Сотрудник с максимальной зарплатой " + employee);
-                        }
-                    }
+        float maxSal = newEmployee[0].getSalary();
+        for (Employee employee : newEmployee) {
+            if (employee.getSalary() > maxSal) {
+                maxSal = employee.getSalary();
+                if (employee.getSalary() == maxSal && employee.getDepartment() == inputDepartment) {
+                    System.out.println("Сотрудник с максимальной зарплатой в отделе: " + employee);
                 }
             }
-
         }
     }
-        static void sumDeptSal(int inputDepartment) {
+
+
+    static void sumDeptSal(int inputDepartment) {
         int sumDeptSalary = 0;
         for (Employee i : newEmployee) {
             int a = i.getDepartment();
@@ -123,15 +115,15 @@ public class Main {
         for (Employee i : newEmployee) {
             int a = i.getDepartment();
             if (a == inputDepartment) {
-                ++quantityEmployee;
-                averegeDepertment = (averegeDepertment + i.getSalary()) / quantityEmployee;
+                quantityEmployee++;
+                averegeDepertment += i.getSalary();
 
             }
         }
-        System.out.println("Средняя зарплата состовляет: " + averegeDepertment);
+        System.out.println("Средняя зарплата состовляет: " + averegeDepertment / quantityEmployee);
     }
 
-    static void indexDepartmentSalary (int inputDepartment, float index) {
+    static void indexDepartmentSalary(int inputDepartment, float index) {
         for (Employee i : newEmployee) {
             int j = i.getDepartment();
             if (j == inputDepartment) {
@@ -143,7 +135,7 @@ public class Main {
         }
     }
 
-    static void printDepartmentFio (int inputDepartment){
+    static void printDepartmentFio(int inputDepartment) {
         for (Employee i : newEmployee) {
             String fioDepart = null;
             int j = i.getDepartment();
@@ -156,26 +148,26 @@ public class Main {
         }
     }
 
-static void calculateLowerIncomingSalary (int inputDepartment, float incomingSalary){
+    static void calculateLowerIncomingSalary(int inputDepartment, float incomingSalary) {
 
-        String fioDepart = null;
-    for (Employee i : newEmployee) {
-        int j = i.getDepartment();
-        if (j == inputDepartment) {
-            if (i.getSalary()< incomingSalary){
-                fioDepart = "id: " + i.getId() + " ФИО: " + i.getLastName() + " " + i.getFirstName() + " " + i.getSurname() + " Зарплата: " + i.getSalary();
-            }
-        }
-    }
-    System.out.println(fioDepart);
-}
-
-    static void calculateUpperIncomingSalary (int inputDepartment,float incomingSalary ){
         String fioDepart = null;
         for (Employee i : newEmployee) {
             int j = i.getDepartment();
             if (j == inputDepartment) {
-                if (i.getSalary()> incomingSalary){
+                if (i.getSalary() < incomingSalary) {
+                    fioDepart = "id: " + i.getId() + " ФИО: " + i.getLastName() + " " + i.getFirstName() + " " + i.getSurname() + " Зарплата: " + i.getSalary();
+                }
+            }
+        }
+        System.out.println(fioDepart);
+    }
+
+    static void calculateUpperIncomingSalary(int inputDepartment, float incomingSalary) {
+        String fioDepart = null;
+        for (Employee i : newEmployee) {
+            int j = i.getDepartment();
+            if (j == inputDepartment) {
+                if (i.getSalary() > incomingSalary) {
                     fioDepart = "id: " + i.getId() + " ФИО: " + i.getLastName() + " " + i.getFirstName() + " " + i.getSurname() + " Зарплата: " + i.getSalary();
                 }
             }
@@ -184,9 +176,7 @@ static void calculateLowerIncomingSalary (int inputDepartment, float incomingSal
     }
 
 
-
-
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         newEmployee[0] = new Employee("Иванов", "Евгений", "Степанович", 1, 28400);
         newEmployee[1] = new Employee("Петров", "Александр", "Сергеевич", 1, 28700);
@@ -200,13 +190,13 @@ static void calculateLowerIncomingSalary (int inputDepartment, float incomingSal
         newEmployee[9] = new Employee("Мавчун", "Ярослав", "Дмитриевич", 5, 64800);
 
 
-
         printEmployee(Arrays.toString(newEmployee));
         calculateTotalSalary(Arrays.toString(newEmployee));
         calculateMinSalary(Arrays.toString(newEmployee));
         calculateMaxSalary(Arrays.toString(newEmployee));
         calculateAverageSalary(Arrays.toString(newEmployee));
         printFIO(Arrays.toString(newEmployee));
-        calculateIndexSalary(Arrays.toString(newEmployee));
+        calculateIndexSalary(newEmployee.length);
+        averageDepartmentSal(newEmployee.length);
     }
 }
