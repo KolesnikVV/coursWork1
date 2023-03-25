@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Main {
+
     public static Employee[] newEmployee = new Employee[10];
 
     static void printEmployee(String people) {
